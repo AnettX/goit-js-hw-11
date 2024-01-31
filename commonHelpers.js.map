@@ -1,1 +1,1 @@
-{"version":3,"file":"commonHelpers.js","sources":[],"sourcesContent":[],"names":[],"mappings":""}
+{"version":3,"file":"commonHelpers.js","sources":["../src/main.js"],"sourcesContent":["const refs = {\nformEl: document.querySelector('.js-search-form'),\nsearchEl: document.querySelector('.js-image-container'),\n};\n\n\n"],"names":[],"mappings":"ssBACQ,SAAS,cAAc,iBAAiB,EACtC,SAAS,cAAc,qBAAqB"}
