@@ -8,16 +8,23 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <section>
+    <section class="block">
       <form class="search-form js-search-form" autocomplete="off">
-        <input
-          type="text"
-          name="text"
-          placeholder="Search images..."
-          autofocus
-        />
-        <button type="submit">Search</button>
+        <div class="form-group">
+          <input
+            type="text"
+            name="text"
+            placeholder="Search images..."
+            autofocus
+          />
+          <button type="submit">Search</button>
+        </div>
       </form>
+
+      <div
+        class="image-container js-image-container"
+        style="justify-content: start"
+      ></div>
     </section>
 
     <script type="module" src="./main.js" defer></script>
