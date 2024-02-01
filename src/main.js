@@ -1,5 +1,4 @@
 import iziToast from "izitoast";
-console.log(iziToast);
 import "izitoast/dist/css/iziToast.min.css";
 
 
@@ -8,7 +7,7 @@ formEl: document.querySelector('.js-search-form'),
 imgEl: document.querySelector('.js-image-container'),
 };
 
-console.log(refs);
+// console.log(refs);
 
 refs.formEl.addEventListener('submit', onFormSubmit);
 
@@ -18,7 +17,7 @@ function onFormSubmit(e) {
     const query = e.target.elements.text.value;
 
     getImg(query).then(data => {
-        console.log(data);
+        renderImg(data);
 
         if (data.hits.length === 0) {
             iziToast.error({
@@ -27,12 +26,14 @@ function onFormSubmit(e) {
                
 });
         }
+        e.target.elements.text.value = '';
     });
 }
 
 // Функція, запит на сервер
 
 function getImg(imgEl) {
+
     const BASE_URL = 'https://pixabay.com/api/';
     
     const PARAMS = new URLSearchParams({
@@ -42,6 +43,7 @@ function getImg(imgEl) {
         orientation: 'horizontal',
         safesearch: true,
     }); 
+    
 
     const url = `${BASE_URL}?${PARAMS.toString()}`;
 
@@ -54,14 +56,35 @@ function getImg(imgEl) {
         },
     };
 
-   
+    
+
    return fetch(url).then(response=>response.json());
 }
 
 
 // Функція розмітки
 
-function imgTemplate(searchEl) {
+function imgTemplate(photo) {
+    return `
+  <div class="photo-container">
+    <img
+      src="${photo.webformatURL}"
+      alt="${photo.tags}"
+      class="photo"
+    />
+  </div>
+  <div class="photo-body">
+    <p class="photo-name">Likes ${photo.likes}</p>
+    <p class="photo-name">Views ${photo.views}</p>
+    <p class="photo-name">Comments ${photo.comments}</p>
+    <p class="photo-name">Downloads ${photo.downloads}</p>
+  </div>`;
     
+}
+
+
+function renderImg(data) {
+    const imagesMarkup = data.hits.map(img => imgTemplate(img)).join('');
+    refs.imgEl.innerHTML = imagesMarkup;
 }
 

@@ -76,10 +76,50 @@ button:hover {
 .block {
   margin: 50px 0;
   padding: 10px;
-  max-width: 100vw;
-  width: 100vw;
-  overflow-x: auto;
+  width: 100%;
+  /* overflow-x: auto; */
   border: 1px solid black;
-  min-height: 200px;
+  min-height: 648px;
   background-color: rgb(255, 255, 255);
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px 24px;
+  padding-top: 32px;
+  margin-bottom: 32px;
+  width: 360px;
+  height: 152px;
+  border: 1px solid #2710a6;
+}
+
+.photo-container {
+  gap: 24px 24px;
+}
+
+.photo-body {
+  display: flex;
+  gap: 32px;
+  outline: 1px solid red;
+  width: 360px;
+  height: 48px;
+
+  color: #2e2f42;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 2em;
+  letter-spacing: 0.04em;
+}
+
+.photo-name {
+  display: flex;
+}
+
+.span-photo-name {
+  font-weight: 600;
+}
+
+.photo {
 }
